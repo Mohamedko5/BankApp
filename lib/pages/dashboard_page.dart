@@ -18,6 +18,7 @@ class _DashboardPageState extends State<DashboardPage> {
         preferredSize: Size.fromHeight(60),
         child: getAppBar(),
       ),
+      body: getBody(context), // Pass context here
     );
   }
 }
@@ -38,6 +39,57 @@ Widget getAppBar() {
       IconButton(
         onPressed: () {},
         icon: Icon(AntDesign.search1, color: white),
+      ),
+    ],
+  );
+}
+
+Widget getBody(BuildContext context) {
+  // Accept context as a parameter
+  var size = MediaQuery.of(context).size;
+  return Column(
+    children: [
+      Container(
+        width: size.width,
+        height: size.height * 0.25,
+        decoration: BoxDecoration(color: primary),
+        child: Column(
+          children: [
+            Container(
+              width: size.width,
+              height: 100,
+              child: Row(
+                children: List.generate(4, (index) {
+                  return Padding(
+                    padding: const EdgeInsets.only(right: 20),
+                    child: Container(
+                      width: size.width * 0.7,
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                "Data",
+                                style: TextStyle(
+                                  color: white,
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+                    ),
+                  );
+                }),
+              ),
+            ),
+          ],
+        ),
       ),
     ],
   );
