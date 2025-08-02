@@ -1,3 +1,4 @@
+import 'package:bankapp/pages/dashboard_page.dart';
 import 'package:bankapp/theme/color.dart';
 import 'package:flutter/material.dart';
 import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.dart';
@@ -24,8 +25,11 @@ class _RootAppState extends State<RootApp> {
             pageIndex = 4;
           });
         },
-        child: Icon(AntDesign.creditcard, size: 25),
+        child: Icon(AntDesign.creditcard, color: white, size: 25),
+        backgroundColor: primary,
       ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      body: getBody(), // <-- This will now work
     );
   }
 
@@ -51,6 +55,56 @@ class _RootAppState extends State<RootApp> {
           pageIndex = index;
         });
       },
+    );
+  }
+
+  // Moved getBody() here inside the class
+  Widget getBody() {
+    return IndexedStack(
+      index: pageIndex,
+      children: [
+        DashboardPage(),
+        Center(
+          child: Text(
+            "Chat Page",
+            style: TextStyle(
+              fontSize: 20,
+              color: black,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+        ),
+        Center(
+          child: Text(
+            "Notification Page",
+            style: TextStyle(
+              fontSize: 20,
+              color: black,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+        ),
+        Center(
+          child: Text(
+            "Account Page",
+            style: TextStyle(
+              fontSize: 20,
+              color: black,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+        ),
+        Center(
+          child: Text(
+            "Credit Card Page",
+            style: TextStyle(
+              fontSize: 20,
+              color: black,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+        ),
+      ],
     );
   }
 }
