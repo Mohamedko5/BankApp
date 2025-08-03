@@ -112,8 +112,130 @@ Widget getBody(BuildContext context) {
                 ),
               ),
             ),
+            Expanded(
+              child: Container(
+                width: size.width,
+                child: Row(
+                  children: [
+                    SizedBox(width: 15),
+                    Flexible(
+                      child: Container(
+                        height: 50,
+                        decoration: BoxDecoration(
+                          color: secondary.withOpacity(0.3),
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        child: Center(
+                          child: Text(
+                            "Add Money",
+                            style: TextStyle(
+                              color: white,
+                              fontWeight: FontWeight.w500,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                    SizedBox(width: 15),
+                    Flexible(
+                      child: Container(
+                        height: 50,
+                        decoration: BoxDecoration(
+                          color: secondary.withOpacity(0.3),
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        child: Center(
+                          child: Text(
+                            "Exchange",
+                            style: TextStyle(
+                              color: white,
+                              fontWeight: FontWeight.w500,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
           ],
         ), //
+      ),
+      Expanded(
+        child: SingleChildScrollView(
+          child: Container(
+            width: size.width,
+            decoration: BoxDecoration(
+              color: white,
+              borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(25),
+                topRight: Radius.circular(25),
+              ),
+            ),
+            child: Padding(
+              padding: const EdgeInsets.only(
+                top: 25,
+                left: 20,
+                right: 20,
+                bottom: 40,
+              ),
+              child: getAccountSection(),
+            ),
+          ),
+        ),
+      ),
+    ],
+  );
+}
+
+Widget getAccountSection() {
+  return Column(
+    crossAxisAlignment: CrossAxisAlignment.start,
+    children: [
+      Text(
+        'Account',
+        style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold),
+      ),
+      SizedBox(height: 15),
+      Container(
+        width: double.infinity,
+        decoration: BoxDecoration(
+          color: white,
+          borderRadius: BorderRadius.circular(12),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.grey.withOpacity(0.1),
+              spreadRadius: 10,
+              blurRadius: 10,
+              // changes position of shadow
+            ),
+          ],
+        ),
+        child: Padding(
+          padding: const EdgeInsets.all(18.0),
+          child: Column(
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Row(
+                    children: [
+                      Container(
+                        width: 40,
+                        height: 40,
+                        decoration: BoxDecoration(
+                          color: secondary.withOpacity(0.3),
+                          borderRadius: BorderRadius.circular(12),
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ],
+          ),
+        ),
       ),
     ],
   );
