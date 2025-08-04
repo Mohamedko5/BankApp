@@ -1,4 +1,6 @@
+// تأكد من الاستيراد الصحيح
 import 'package:bankapp/data_jons/balance_json.dart';
+import 'package:bankapp/pages/card_page.dart' show CardPage;
 import 'package:bankapp/theme/color.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_vector_icons/flutter_vector_icons.dart';
@@ -14,7 +16,7 @@ class _DashboardPageState extends State<DashboardPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: primary, // Replace with primary if needed
+      backgroundColor: primary,
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(60),
         child: getAppBar(),
@@ -27,7 +29,7 @@ class _DashboardPageState extends State<DashboardPage> {
 Widget getAppBar() {
   return AppBar(
     elevation: 0,
-    backgroundColor: primary, // Replace with primary if needed
+    backgroundColor: primary,
     leading: IconButton(
       onPressed: () {},
       icon: CircleAvatar(
@@ -160,7 +162,7 @@ Widget getBody(BuildContext context) {
               ),
             ),
           ],
-        ), //
+        ),
       ),
       Expanded(
         child: SingleChildScrollView(
@@ -180,7 +182,7 @@ Widget getBody(BuildContext context) {
                 right: 20,
                 bottom: 40,
               ),
-              child: getAccountSection(),
+              child: getAccountSection(context),
             ),
           ),
         ),
@@ -189,7 +191,7 @@ Widget getBody(BuildContext context) {
   );
 }
 
-Widget getAccountSection() {
+Widget getAccountSection(BuildContext context) {
   return Column(
     crossAxisAlignment: CrossAxisAlignment.start,
     children: [
@@ -208,7 +210,6 @@ Widget getAccountSection() {
               color: Colors.grey.withOpacity(0.1),
               spreadRadius: 10,
               blurRadius: 10,
-              // changes position of shadow
             ),
           ],
         ),
@@ -228,12 +229,183 @@ Widget getAccountSection() {
                           color: secondary.withOpacity(0.3),
                           borderRadius: BorderRadius.circular(12),
                         ),
+                        child: Icon(AntDesign.wallet, color: primary, size: 20),
+                      ),
+                      SizedBox(width: 10),
+                      Text(
+                        '4823 1234 5678 9012',
+                        style: TextStyle(fontSize: 16),
+                      ),
+                    ],
+                  ),
+                  Icon(Icons.keyboard_arrow_down, color: primary),
+                ],
+              ),
+              SizedBox(height: 10),
+              Padding(
+                padding: const EdgeInsets.only(left: 50),
+                child: Divider(thickness: 0.2),
+              ),
+              SizedBox(height: 10),
+              Row(
+                children: [
+                  Row(
+                    children: [
+                      Container(
+                        width: 40,
+                        height: 40,
+                        decoration: BoxDecoration(
+                          color: secondary.withOpacity(0.3),
+                          borderRadius: BorderRadius.circular(12),
+                        ),
+                        child: Icon(
+                          MaterialIcons.euro_symbol,
+                          color: primary,
+                          size: 20,
+                        ),
+                      ),
+                      SizedBox(width: 10),
+                      Text('18 199.24 EUR', style: TextStyle(fontSize: 16)),
+                    ],
+                  ),
+                ],
+              ),
+              SizedBox(height: 5),
+              Padding(
+                padding: const EdgeInsets.only(left: 50),
+                child: Divider(thickness: 0.2),
+              ),
+              SizedBox(height: 10),
+              Row(
+                children: [
+                  Row(
+                    children: [
+                      Container(
+                        width: 40,
+                        height: 40,
+                        decoration: BoxDecoration(
+                          color: secondary.withOpacity(0.3),
+                          borderRadius: BorderRadius.circular(12),
+                        ),
+                        child: Icon(
+                          MaterialCommunityIcons.currency_gbp,
+                          color: primary,
+                          size: 20,
+                        ),
+                      ),
+                      SizedBox(width: 10),
+                      Text(
+                        '36.67 GBP',
+                        style: TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.w600,
+                        ),
                       ),
                     ],
                   ),
                 ],
               ),
             ],
+          ),
+        ),
+      ),
+      SizedBox(height: 20),
+      Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Text(
+            'Cards',
+            style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold),
+          ),
+          Container(
+            width: 98,
+            height: 22,
+            decoration: BoxDecoration(
+              color: secondary.withOpacity(0.5),
+              borderRadius: BorderRadius.circular(8),
+            ),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Icon(Ionicons.ios_add, color: primary, size: 16),
+                Text(
+                  ' Add Card',
+                  style: TextStyle(
+                    fontSize: 11,
+                    color: primary,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+                SizedBox(width: 5),
+              ],
+            ),
+          ),
+        ],
+      ),
+      SizedBox(height: 15),
+      GestureDetector(
+        onTap: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (_) => CardPage()),
+          );
+        },
+        child: Container(
+          width: double.infinity,
+          decoration: BoxDecoration(
+            color: white,
+            borderRadius: BorderRadius.circular(12),
+            boxShadow: [
+              BoxShadow(
+                color: Colors.grey.withOpacity(0.1),
+                spreadRadius: 10,
+                blurRadius: 10,
+              ),
+            ],
+          ),
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Column(
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Row(
+                      children: [
+                        Container(
+                          width: 40,
+                          height: 40,
+                          decoration: BoxDecoration(
+                            color: secondary.withOpacity(0.3),
+                            borderRadius: BorderRadius.circular(12),
+                          ),
+                          child: Icon(
+                            AntDesign.creditcard,
+                            color: primary,
+                            size: 20,
+                          ),
+                        ),
+                        SizedBox(width: 10),
+                        Text(
+                          'EUR *2338',
+                          style: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
+                      ],
+                    ),
+                    Text(
+                      '8 199.24 EUR',
+                      style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
           ),
         ),
       ),
