@@ -13,16 +13,45 @@ class _CardPageState extends State<CardPage> {
     return Scaffold(
       appBar: AppBar(title: const Text('Card Page')),
       body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+        child: Card(
+          elevation: 4.0,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(10.0),
+          ),
+          child: Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: <Widget>[
+                const Text(
+                  'This is a Card',
+                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                ),
+                const SizedBox(height: 10),
+                const Text(
+                  'Cards are used to display content in a structured way.',
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
+      backgroundColor: Colors.grey[200],
+      bottomNavigationBar: BottomAppBar(
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
-            const Text('This is the Card Page', style: TextStyle(fontSize: 24)),
-            SizedBox(height: 20),
-            ElevatedButton(
+            IconButton(
+              icon: const Icon(Icons.home),
               onPressed: () {
-                Navigator.pop(context);
+                // Navigate to home
               },
-              child: const Text('Go Back'),
+            ),
+            IconButton(
+              icon: const Icon(Icons.settings),
+              onPressed: () {
+                // Navigate to settings
+              },
             ),
           ],
         ),
