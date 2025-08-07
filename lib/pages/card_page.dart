@@ -112,7 +112,15 @@ Widget getCard(
       Container(
         width: size.width * 0.85,
         height: 170,
-        decoration: BoxDecoration(color: bgColor),
+        decoration: BoxDecoration(
+          color: bgColor,
+          borderRadius: BorderRadius.circular(12),
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [],
+        ),
       ),
     ],
   );
