@@ -2,6 +2,7 @@ import 'package:bankapp/data_jons/card_json.dart' show cardLists;
 import 'package:bankapp/pages/dashboard_page.dart';
 import 'package:bankapp/theme/color.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_vector_icons/flutter_vector_icons.dart';
 
 class CardPage extends StatefulWidget {
   const CardPage({super.key});
@@ -119,7 +120,54 @@ Widget getCard(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [],
+          children: [
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Icon(
+                  Feather.credit_card,
+                  color: white.withOpacity(0.3),
+                  size: 30,
+                ),
+                SizedBox(height: 15),
+                Text(
+                  cardNumber,
+                  style: TextStyle(
+                    fontSize: 20,
+                    color: white.withOpacity(0.8),
+                    wordSpacing: 15,
+                  ),
+                ),
+              ],
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      'Valid Date',
+                      style: TextStyle(
+                        fontSize: 12,
+                        color: white.withOpacity(0.6),
+                      ),
+                    ),
+                    SizedBox(height: 5),
+                    Text(
+                      validDate,
+                      style: TextStyle(
+                        fontSize: 16,
+                        color: white.withOpacity(0.8),
+                      ),
+                    ),
+                  ],
+                ),
+                Image.asset('assets/images/master_card_logo.png', width: 50),
+              ],
+            ),
+          ],
         ),
       ),
     ],
