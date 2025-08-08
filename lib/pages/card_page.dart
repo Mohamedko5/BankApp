@@ -114,8 +114,20 @@ Widget getCard(
         width: size.width * 0.85,
         height: 170,
         decoration: BoxDecoration(
-          color: bgColor,
+          gradient: LinearGradient(
+            colors: [bgColor, bgColor.withOpacity(0.7)],
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+          ),
           borderRadius: BorderRadius.circular(12),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withOpacity(0.1),
+              spreadRadius: 3,
+              blurRadius: 6,
+              offset: Offset(0, 4), // Shadow position
+            ),
+          ],
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -132,11 +144,15 @@ Widget getCard(
                 ),
                 SizedBox(height: 15),
                 Text(
-                  cardNumber,
+                  cardNumber.replaceRange(
+                    4,
+                    12,
+                    '**** ****',
+                  ), // Mask middle part of the card number
                   style: TextStyle(
                     fontSize: 20,
                     color: white.withOpacity(0.8),
-                    wordSpacing: 15,
+                    letterSpacing: 2,
                   ),
                 ),
               ],
@@ -154,17 +170,17 @@ Widget getCard(
                         color: white.withOpacity(0.6),
                       ),
                     ),
-                    SizedBox(height: 5),
-                    Text(
-                      validDate,
-                      style: TextStyle(
-                        fontSize: 16,
-                        color: white.withOpacity(0.8),
-                      ),
-                    ),
                   ],
                 ),
-                Image.asset('assets/images/master_card_logo.png', width: 50),
+                AnimatedOpacity(
+                  opacity:
+                      1.0, // You can add a delay here to make the logo fade in
+                  duration: Duration(seconds: 1),
+                  child: Image.asset(
+                    'assets/images/master_card_logo.png',
+                    width: 50,
+                  ),
+                ),
               ],
             ),
           ],
